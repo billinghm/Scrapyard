@@ -1,0 +1,15 @@
+beautifulsoup4==4.15.0
+bs4==0.0.2
+certifi==2026.10.23
+cffi==2.1.1
+charset-normalizer==3.5.2
+curl_cffi==0.17.0
+http_client==0.1.22
+idna==3.20
+pycparser==3.12
+pycurl==7.49.0
+requests==2.34.2
+six==1.17.0
+soupsieve==4.0.1
+typing_extensions==4.16.0
+urllib3==2.8.0

@@ -52,8 +52,11 @@ def get(url, **kwargs):
     return _requests.get(url, **kwargs)
 
 
-def search_pickles(url, skip=0, top=30, filter=""):
-    query = {"search": "*", "count": True, "top": top, "skip": skip, "orderby": "", "filter": filter}
+def search_pickles(url, skip=0, top=30, filter="", fields=""):
+    if fields == "":
+        query = {"search": "*", "count": True, "top": top, "skip": skip, "orderby": "", "filter": filter}
+    else:
+        query = {"search": "*", "count": True, "top": top, "skip": skip, "orderby": "titleSort", "filter": filter, "select": fields}
     body = {"data": base64.b64encode(json.dumps(query).encode()).decode()}
     headers = {"x-encode-base64": "true"} 
     if _USING_CFFI:
@@ -64,3 +67,4 @@ def search_pickles(url, skip=0, top=30, filter=""):
     r = _requests.post(url, json=body, headers=headers)
     r.raise_for_status()
     return r.json()
+
